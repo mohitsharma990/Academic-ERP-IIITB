@@ -43,6 +43,8 @@ public class EmployeeUtility {
     }
 
     public int getDepartmentCount(int id) {
-        return employeeRepository.countByDepartmentId(id);  // Ensure this method exists in the repository
+        int n = employeeRepository.countByDepartmentId(id);
+        return n;
+//        return employeeRepository.countByDepartmentId(id);  // Ensure this method exists in the repository
     }
 }

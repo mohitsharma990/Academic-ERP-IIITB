@@ -18,6 +18,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query(value = "SELECT * FROM employee WHERE email = :email", nativeQuery = true)
     Employee findByEmail( @Param("email") String email);
 
-    @Query(value = "SELECT count(*) FROM employee WHERE department = :id", nativeQuery = true)
+    @Query(value = "SELECT count(*) FROM employee WHERE department_id = :id", nativeQuery = true)
     int countByDepartmentId(@Param("id") int id);
 }

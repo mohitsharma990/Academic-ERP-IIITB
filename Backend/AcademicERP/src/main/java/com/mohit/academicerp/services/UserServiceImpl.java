@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(UserDTO userDto) {
         // Check if the employee exists and assign a department if needed
-        Department department = checkRoleExist();
+//        Department department = checkRoleExist();
 
         User user = new User();
         String encryptedPassword = passwordEncoder.encode(userDto.getPassword());
@@ -44,9 +44,9 @@ public class UserServiceImpl implements UserService {
         user.setEmployee(userDto.getEmployee());
 
         // Ensure the employee has a department or assign one if missing
-        if (user.getEmployee().getDepartment() == null) {
-            user.getEmployee().setDepartment(department);
-        }
+//        if (user.getEmployee().getDepartment() == null) {
+//            user.getEmployee().setDepartment(department);
+//        }
 
         userRepository.save(user);
     }
