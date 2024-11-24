@@ -1,11 +1,13 @@
 package com.mohit.academicerp.dto;
 
 import jakarta.validation.constraints.Positive;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class DetailsDTO {
 
     private String name;
@@ -15,12 +17,5 @@ public class DetailsDTO {
 
     @Positive(message = "Strength must be positive")
     private long strength;
-
-    // Optional: Constructor to easily initialize all fields
-    public DetailsDTO(String name, long capacity, long strength) {
-        this.name = name;
-        this.capacity = capacity;
-        this.strength = strength;
-    }
 
 }

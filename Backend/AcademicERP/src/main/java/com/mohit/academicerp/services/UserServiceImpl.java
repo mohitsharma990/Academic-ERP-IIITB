@@ -10,12 +10,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+    @Autowired
     private final UserRepository userRepository;
+
+    @Autowired
     private final DepartmentRepository departmentRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -34,11 +37,11 @@ public class UserServiceImpl implements UserService {
         Department department = checkRoleExist();
 
         User user = new User();
-        String encryptedPassword = passwordEncoder.encode(UserDTO.getPassword());
+        String encryptedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setPassword(encryptedPassword);
-        user.setActive(UserDTO.getActive());
-        user.setExpired(UserDTO.getExpired());
-        user.setEmployee(UserDTO.getEmployee());
+        user.setActive(userDto.getActive());
+        user.setExpired(userDto.getExpired());
+        user.setEmployee(userDto.getEmployee());
 
         // Ensure the employee has a department or assign one if missing
         if (user.getEmployee().getDepartment() == null) {
@@ -63,8 +66,8 @@ public class UserServiceImpl implements UserService {
 
     private UserDTO mapToUserDto(User user) {
         UserDTO userDto = new UserDTO();
-        userDto.setFirstName(user.getEmployee().getFirst_name());
-        userDto.setLastName(user.getEmployee().getLast_name());
+        userDto.setFirstName(user.getEmployee().getFirstName());
+        userDto.setLastName(user.getEmployee().getLastName());
         userDto.setEmail(user.getEmployee().getEmail());
         return userDto;
     }
@@ -72,10 +75,11 @@ public class UserServiceImpl implements UserService {
     private Department checkRoleExist() {
         // If no department exists with name "ADMIN", create and return one
         Department department = departmentRepository.findByName("ADMIN");
-        if (department == null) {
-            department = new Department();
+        if (department.equals(null)) {
+//            department = Optional.Optionalof(new Department());
             department.setName("ADMIN");
-            department.setCapacity(2L);
+            department.setCapacity(2);
+
             department = departmentRepository.save(department);
         }
         return department;

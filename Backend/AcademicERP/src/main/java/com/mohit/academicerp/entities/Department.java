@@ -3,14 +3,15 @@ package com.mohit.academicerp.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
+import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Entity(name = "departments")
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
+@Entity
+@Table(name = "departments")
 public class Department {
 
     @Id

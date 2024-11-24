@@ -35,14 +35,14 @@ public class EmployeeUtility {
     }
 
     public List<Employee> getEmployeeByDept(int id) {
-        return employeeRepository.getEmployeeByDept(id);  // Ensure this method exists in the repository
+        return employeeRepository.findByDepartmentId(id);  // Ensure this method exists in the repository
     }
 
     public Employee getEmployeeByEmail(String email) {
-        return employeeRepository.getEmployeeByEmail(email);  // Ensure this method exists in the repository
+        return employeeRepository.findByEmail(email);  // Ensure this method exists in the repository
     }
 
     public int getDepartmentCount(int id) {
-        return employeeRepository.getDepartmentCount(id);  // Ensure this method exists in the repository
+        return employeeRepository.countByDepartmentId(id);  // Ensure this method exists in the repository
     }
 }

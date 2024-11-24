@@ -117,7 +117,7 @@ public class DepartmentController {
             Optional<Department> department = departmentService.getDepartment(7);
             List<Employee> employees = employeeUtility.getEmployeeByDept(id);
             for (Employee em : employees) {
-                User user = userUtility.finUserByEmail(em.getEmail());
+                User user = userUtility.findUserByEmail(em.getEmail());
                 user.setActive(false);
                 user = userUtility.addUser(user);
                 if (user == null || user.getId() == 0) {

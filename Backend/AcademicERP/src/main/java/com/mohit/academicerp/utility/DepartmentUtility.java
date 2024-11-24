@@ -30,8 +30,8 @@ public class DepartmentUtility {
         return (List<Department>) departmentRepository.findAll();
     }
 
-    public Optional<Department> getDepartment(int id) {
-        return departmentRepository.findById(id);
+    public Department getDepartment(int id) {
+        return departmentRepository.findById(id).get();
     }
 
     public void deleteDepartment(int id) {

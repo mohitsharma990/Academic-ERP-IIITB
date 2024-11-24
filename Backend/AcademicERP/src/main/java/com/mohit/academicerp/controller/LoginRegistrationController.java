@@ -44,20 +44,20 @@ public class LoginRegistrationController {
             if (!validEmployee) return ResponseEntity.status(500).body("Invalid employee details provided.");
 
             // Get Department
-            Optional<Department> department = departmentUtility.getDepartment(Integer.parseInt(registrationDTO.getDepartment()));
+            Department department = departmentUtility.getDepartment(Integer.parseInt(registrationDTO.getDepartment()));
             int count = employeeUtility.getDepartmentCount(Integer.parseInt(registrationDTO.getDepartment()));
-            if (department.isEmpty() || department.get().getCapacity() <= count) {
+            if (department == null || department.getCapacity() <= count) {
                 return ResponseEntity.status(500).body("Department strength has reached maximum.");
             }
 
             // Add Employee
             Employee employee = new Employee();
             employee.setEmail(registrationDTO.getEmail());
-            employee.setFirst_name(registrationDTO.getFirst_name());
-            employee.setLast_name(registrationDTO.getLast_name());
+            employee.setFirstName(registrationDTO.getFirstName());
+            employee.setLastName(registrationDTO.getLastName());
             employee.setTitle(registrationDTO.getTitle());
-            employee.setPath(registrationDTO.getPath());
-            employee.setDepartment(department.get());
+            employee.setPhotoPath(registrationDTO.getPhotoPath().toString());
+            employee.setDepartment(department);
             employee = employeeUtility.addEmployee(employee);
             if (employee == null || employee.getId() == 0) {
                 return ResponseEntity.status(500).body("Employee could not be added.");
@@ -100,10 +100,10 @@ public class LoginRegistrationController {
         String username = loginDTO.getEmail();
         String password = loginDTO.getPassword();
 
-        boolean valid = userService.Authenticate(username, password);
+        boolean valid = userService.authenticate(username, password);
 
         if (valid) {
-            User user = userUtility.finUserByEmail(loginDTO.getEmail());
+            User user = userUtility.findUserByEmail(loginDTO.getEmail());
             if (user.getActive()) {
                 Employee employee = employeeUtility.getEmployeeByEmail(loginDTO.getEmail());
                 return ResponseEntity.ok(employee);

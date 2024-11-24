@@ -22,8 +22,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Boolean employeeExists(Employee employee) {
         List<Employee> employeeList = employeeRepository.findAll();
         for (Employee employee1 : employeeList) {
-            if (employee1.getFirst_name().equals(employee.getFirst_name()) &&
-                    employee1.getLast_name().equals(employee.getLast_name()) &&
+            if (employee1.getFirstName().equals(employee.getFirstName()) &&
+                    employee1.getLastName().equals(employee.getLastName()) &&
                     employee1.getEmail().equals(employee.getEmail())) {
                 return true;
             }

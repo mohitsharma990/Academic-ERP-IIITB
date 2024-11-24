@@ -2,15 +2,11 @@ package com.mohit.academicerp.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
 public class RegistrationDTO {
 
     @Email(message = "Email should be valid")
@@ -27,7 +23,7 @@ public class RegistrationDTO {
     private String title;
 
     @NotBlank(message = "Path is mandatory")
-    private String path;
+    private String photoPath;
 
     @NotBlank(message = "Department is mandatory")
     private String department;

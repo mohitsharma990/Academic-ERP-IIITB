@@ -11,8 +11,8 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("SELECT u FROM users u JOIN u.employee e WHERE u.password = ?2 AND e.email = ?1")
-    Optional<User> validateUser(String email, String password);
+    User validateUser(String email, String password);
 
     @Query("SELECT u FROM users u JOIN u.employee e WHERE e.email = ?1")
-    Optional<User> findUserByEmail(String email);
+    User findUserByEmail(String email);
 }

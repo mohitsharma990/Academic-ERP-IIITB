@@ -46,8 +46,8 @@ public class UserController {
             User user = userService.findUserByEmail(email);  // Call to service layer
             if (user != null) {
                 UserDTO userDTO = new UserDTO();
-                userDTO.setFirstName(user.getEmployee().getFirst_name());
-                userDTO.setLastName(user.getEmployee().getLast_name());
+                userDTO.setFirstName(user.getEmployee().getFirstName());
+                userDTO.setLastName(user.getEmployee().getLastName());
                 userDTO.setEmail(user.getEmployee().getEmail());
                 return ResponseEntity.ok(userDTO);  // Return user details
             } else {
