@@ -177,7 +177,7 @@ const Dashboard = () => {
           <form>
             <div class="contact-form select-department margin-top">
               <div>
-                <label><span style={{ color : 'black', fontWeight : 'bold' }}>Department</span></label>
+                <label><span style={{ color : 'black', fontWeight : 'bold', fontSize: '17px'}}>Department</span></label>
               </div>
               <div>
                 <select name="department" id="department" class="input_text" onChange={handleChange}>
@@ -192,7 +192,7 @@ const Dashboard = () => {
         </div>
         <div>
         {employees.map((item, i) => (
-          <div class={`panel marRight30 marginTop marginBottom ${item.department.id === 7 ? 'fade' : ''}`}>
+          <div data-aos = "fade-up" class={`panel marRight30 marginTop marginBottom ${item.department.id === 7 ? 'fade' : ''}`}>
             <div class="img"><img src={require("./../images/img-1.jpg")} alt='profile'/></div>
             <div class="title">
               <h1 class="border-bottom">{item.firstName + " " + item.lastName}</h1>
