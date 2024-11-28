@@ -32,23 +32,32 @@ public class SpringSecurity {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
-        http.cors(Customizer.withDefaults())
-                .csrf().disable()
-                .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/handle/**").permitAll()
-                                .requestMatchers("/**").permitAll()
-                                .requestMatchers("/departments/**").permitAll()
-                                .requestMatchers("/employee/**").permitAll()
-                                .requestMatchers("/employee/get/**").permitAll()
-                                .requestMatchers("/users").hasRole("ADMIN")
-                ).formLogin().disable()
-                .logout(
-                        logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+        http
+                // Configure session management
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                )
+                // Enable CORS
+                .cors(Customizer.withDefaults())
+                // Disable CSRF (if applicable)
+                .csrf(csrf -> csrf.disable())
+                // Authorization
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/handle/**").permitAll()
+                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/departments/**").permitAll()
+                        .requestMatchers("/employee/**").permitAll()
+                        .requestMatchers("/employee/get/**").permitAll()
+                        .requestMatchers("/users").hasRole("ADMIN")
+                )
+                // Form login
+                .formLogin(form -> form.disable())
+                // Logout
+                .logout(logout ->
+                        logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .permitAll()
                 );
+
         return http.build();
     }
 
