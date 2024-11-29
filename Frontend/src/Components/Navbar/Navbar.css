@@ -1,0 +1,115 @@
+/* Main navbar container */
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(120deg, #007bff, #4dabf7);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  /* Left panel styling */
+  .left-panel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .left-panel b {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-right: 15px;
+  }
+  
+  /* Create button styling */
+  .create {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .create a {
+    text-decoration: none;
+    color: white;
+    background-color: #0288d1;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .create a:hover {
+    background-color: #01579b;
+    transform: scale(1.05);
+  }
+  
+  /* Right panel styling */
+  .right-panel {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .right-panel span {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 10px;
+    color: white;
+  }
+  
+  /* Avatar button styling */
+  #fade-button {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #fade-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Dropdown menu styling */
+  .MuiMenu-paper {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .MuiMenuItem-root {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .MuiMenuItem-root:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .main {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .right-panel {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .left-panel b {
+      font-size: 1.3rem;
+    }
+  
+    .create a {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+  }

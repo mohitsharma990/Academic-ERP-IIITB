@@ -1,0 +1,84 @@
+/* Card Container */
+.card-container {
+    border: 1px solid #000;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    width: 200px; /* Increase the width */
+    margin: 20px auto;
+}
+
+.card-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Content */
+.card-content {
+    padding: 24px; /* Increase padding */
+    font-family: 'Arial', sans-serif;
+}
+
+.card-content p {
+    margin: 12px 0; /* Add spacing between lines */
+    font-size: 1.2rem; /* Increase font size */
+    color: #555;
+}
+
+.card-content p span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Card Actions */
+.card-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px; /* Increase padding */
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+}
+
+.card-actions .MuiButton-root {
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    padding: 10px 20px; /* Increase button size */
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.card-actions .MuiButton-root:hover {
+    background-color: #0056b3;
+}
+
+/* Card Styling */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fafafa; /* Light background color for the cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 10px); /* Each card will take 50% of the row width minus the gap */
+    min-height: 200px;
+    text-align: center;
+}
+
+/* Hover effect for the cards */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card .MuiCardActionArea-root {
+    width: 100%;
+}
+
+/* Adding margins between cards */
+.card + .card {
+    margin-top: 20px;
+}
